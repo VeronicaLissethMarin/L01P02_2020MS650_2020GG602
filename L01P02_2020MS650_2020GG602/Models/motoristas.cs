@@ -5,7 +5,7 @@ namespace L01P02_2020MS650_2020GG602.Models
     {
         [Key]
         public int motoristaId { get; set; }
-        public string nombreMotorista { get; set; }
+        public string? nombreMotorista { get; set; }
 
     }
 }
