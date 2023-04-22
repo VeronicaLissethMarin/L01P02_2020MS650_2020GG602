@@ -21,20 +21,20 @@ namespace L01P02_2020MS650_2020GG602.Controllers
         // GET: motoristas
         public async Task<IActionResult> Index()
         {
-              return _context.motorista != null ? 
-                          View(await _context.motorista.ToListAsync()) :
-                          Problem("Entity set 'restauranteDbContext.motorista'  is null.");
+              return _context.motoristas != null ? 
+                          View(await _context.motoristas.ToListAsync()) :
+                          Problem("Entity set 'restauranteDbContext.motoristas'  is null.");
         }
 
         // GET: motoristas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.motorista == null)
+            if (id == null || _context.motoristas == null)
             {
                 return NotFound();
             }
 
-            var motoristas = await _context.motorista
+            var motoristas = await _context.motoristas
                 .FirstOrDefaultAsync(m => m.motoristaId == id);
             if (motoristas == null)
             {
@@ -55,7 +55,7 @@ namespace L01P02_2020MS650_2020GG602.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("motoristaId,nombreMotorista")] motoristas motoristas)
+        public async Task<IActionResult> Create([Bind("motoristaId,nombremotoristas")] motoristas motoristas)
         {
             if (ModelState.IsValid)
             {
@@ -69,12 +69,12 @@ namespace L01P02_2020MS650_2020GG602.Controllers
         // GET: motoristas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.motorista == null)
+            if (id == null || _context.motoristas == null)
             {
                 return NotFound();
             }
 
-            var motoristas = await _context.motorista.FindAsync(id);
+            var motoristas = await _context.motoristas.FindAsync(id);
             if (motoristas == null)
             {
                 return NotFound();
@@ -87,7 +87,7 @@ namespace L01P02_2020MS650_2020GG602.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("motoristaId,nombreMotorista")] motoristas motoristas)
+        public async Task<IActionResult> Edit(int id, [Bind("motoristaId,nombremotoristas")] motoristas motoristas)
         {
             if (id != motoristas.motoristaId)
             {
@@ -120,12 +120,12 @@ namespace L01P02_2020MS650_2020GG602.Controllers
         // GET: motoristas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.motorista == null)
+            if (id == null || _context.motoristas == null)
             {
                 return NotFound();
             }
 
-            var motoristas = await _context.motorista
+            var motoristas = await _context.motoristas
                 .FirstOrDefaultAsync(m => m.motoristaId == id);
             if (motoristas == null)
             {
@@ -140,14 +140,14 @@ namespace L01P02_2020MS650_2020GG602.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.motorista == null)
+            if (_context.motoristas == null)
             {
-                return Problem("Entity set 'restauranteDbContext.motorista'  is null.");
+                return Problem("Entity set 'restauranteDbContext.motoristas'  is null.");
             }
-            var motoristas = await _context.motorista.FindAsync(id);
+            var motoristas = await _context.motoristas.FindAsync(id);
             if (motoristas != null)
             {
-                _context.motorista.Remove(motoristas);
+                _context.motoristas.Remove(motoristas);
             }
             
             await _context.SaveChangesAsync();
@@ -156,7 +156,7 @@ namespace L01P02_2020MS650_2020GG602.Controllers
 
         private bool motoristasExists(int id)
         {
-          return (_context.motorista?.Any(e => e.motoristaId == id)).GetValueOrDefault();
+          return (_context.motoristas?.Any(e => e.motoristaId == id)).GetValueOrDefault();
         }
     }
 }
